@@ -11,6 +11,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.moviles.finalprojectapp.adapters.RandomAdampter
+import com.moviles.finalprojectapp.adapters.WishlistAdampter
 import com.moviles.finalprojectapp.database.Product
 import com.moviles.finalprojectapp.remote.ItemEntry
 import com.moviles.finalprojectapp.remote.RetrofitBuilder
@@ -18,7 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PerfilActivity : AppCompatActivity(), RandomAdampter.ClickSaveInterface {
+class PerfilActivity : AppCompatActivity(), RandomAdampter.ClickSaveInterface, WishlistAdampter.ClickDeleteInterface {
     private val mainViewModel: MainViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +34,12 @@ class PerfilActivity : AppCompatActivity(), RandomAdampter.ClickSaveInterface {
         val tvLevel = findViewById<TextView>(R.id.tv_level)
 
         val rvRandom = findViewById<RecyclerView>(R.id.rc_random)
+        val rvWishlist = findViewById<RecyclerView>(R.id.rc_wishlist)
 
 
         val opcion = intent.getStringExtra("opcion")
 
+        //myRef.child("user").child("0".setValue(User("5", "", "David R.", "Bulbasaurior")))
         myRef.child("user").child(opcion.toString()).get().addOnSuccessListener {
 
             val gson = Gson()
@@ -65,20 +68,18 @@ class PerfilActivity : AppCompatActivity(), RandomAdampter.ClickSaveInterface {
                 }
                 val adapter = RandomAdampter(callback, data)
                 rvRandom.adapter = adapter
-            }
 
+                val adapterW = WishlistAdampter(callback, data)
+                rvWishlist.adapter = adapterW
+            }
 
             override fun onFailure(call: Call<Array<ItemEntry>>, t: Throwable) {
                 Toast.makeText(context, "Falló Retrofit: Timeout", Toast.LENGTH_LONG).show()
             }
         })
 
-        //Recycler favoritos
-
-
+        //Recycler whishlist
         val favoritos  = mainViewModel.getProducts()
-
-
 
         /*setContentView(R.layout.activity_main)
         mainViewModel.saveProduct(Product(
@@ -113,5 +114,10 @@ class PerfilActivity : AppCompatActivity(), RandomAdampter.ClickSaveInterface {
         Toast.makeText(this, "${product.product_title} Guardado!", Toast.LENGTH_LONG).show()
     }
 
+    override fun onDeleteClick(product: Product) {
+        mainViewModel.deleteProduct(product)
+
+        Toast.makeText(this, "${product.product_title} Borrado!", Toast.LENGTH_LONG).show()
+    }
 
 }

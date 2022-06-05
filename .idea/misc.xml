@@ -11,7 +11,8 @@
         <entry key="..\:/Users/Diego/AndroidStudioProjects/FinalProjectApp/app/src/main/res/layout/item_randomlist.xml" value="0.25" />
         <entry key="..\:/Users/Diego/AndroidStudioProjects/FinalProjectApp/app/src/main/res/layout/item_searchable.xml" value="0.1" />
         <entry key="..\:/Users/Diego/AndroidStudioProjects/FinalProjectApp/app/src/main/res/layout/item_wishlist.xml" value="0.25" />
-        <entry key="..\:/Users/Diego/AndroidStudioProjects/FinalProjectApp/app/src/main/res/layout/recycler_random.xml" value="0.1683760683760684" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/FinalProjectApp/app/src/main/res/layout/recycler_random.xml" value="0.1" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/FinalProjectApp/app/src/main/res/layout/recycler_wishlist.xml" value="0.1252136752136752" />
       </map>
     </option>
   </component>
