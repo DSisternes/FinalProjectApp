@@ -13,7 +13,7 @@
         android:id="@+id/tv_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Menu"
+        android:text="Menú de Perfiles"
         android:textColor="@color/black"
         android:textSize="36dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,6 @@
         app:layout_constraintBottom_toTopOf="@+id/bt_perfil2"
         />
 
-
     <Button
         android:id="@+id/bt_perfil2"
         android:layout_width="match_parent"
@@ -39,7 +38,6 @@
         app:layout_constraintBottom_toTopOf="@+id/bt_perfil3"
         app:layout_constraintTop_toBottomOf="@+id/bt_perfil1"
         />
-
 
     <Button
         android:id="@+id/bt_perfil3"
